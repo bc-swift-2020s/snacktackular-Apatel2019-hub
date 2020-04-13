@@ -30,9 +30,12 @@ class SpotsListViewController: UIViewController {
         tableView.isHidden = true
         
         spots = Spots()
-        spots.spotArray.append(Spot(name: "Zuma", address: "Dalton St", coordinate: CLLocationCoordinate2D(), averageRating: 0.0, numberOfReviews: 0, postingUserID: "", documentID: ""))
-        spots.spotArray.append(Spot(name: "Legal Seafoods", address: "The Street - Chestnut Hill", coordinate: CLLocationCoordinate2D(), averageRating: 0.0, numberOfReviews: 0, postingUserID: "", documentID: ""))
-        spots.spotArray.append(Spot(name: "Del Frisco's Double Eagle Steak House", address: "Northern Ave", coordinate: CLLocationCoordinate2D(), averageRating: 0.0, numberOfReviews: 0, postingUserID: "", documentID: ""))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        spots.loadData {
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
